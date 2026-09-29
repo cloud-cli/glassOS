@@ -1,0 +1,35 @@
+appId: io.github.cloud-cli.glassos
+productName: GlassOS
+artifactName: "${productName}-${version}-${arch}.${ext}"
+directories:
+  output: dist
+deb:
+  depends:
+    - libatk-bridge2.0-0
+    - libatspi2.0-0
+    - libgtk-3-0
+    - libnss3
+    - libxss1
+    - libasound2
+    - libgbm1
+    - libxkbcommon0
+    - libxtst6
+    - libnotify4
+    - xdg-utils
+  recommends: []
+files:
+  - backend/**/*
+  - electron/**/*
+  - package.json
+linux:
+  target:
+    - target: deb
+      arch:
+        - x64
+  category: Utility
+  executableName: glassos
+  packageCategory: utils
+  synopsis: A transparent webview desktop shell
+  description: GlassOS is a lightweight webview-driven UI layer for Ubuntu and Wayland.
+  maintainer: GlassOS contributors
+  syncDesktopName: true
