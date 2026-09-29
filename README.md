@@ -86,7 +86,7 @@ Success returns `{"jsonrpc":"2.0","id":"hostname","result":{"path":"/etc/hostnam
 
 ## 4. Build and Install on Ubuntu
 
-The supported initial installer target is **Ubuntu 22.04/24.04, x86_64**. The build machine needs Node.js 22.13 or newer, npm 10 or newer, `dpkg-deb`, `tar`, and `xz-utils`. If `xvfb-run` is installed, the build also launches the packaged application and verifies the UI-to-backend flow headlessly. From a fresh clone, run:
+The supported installer target is **Ubuntu 22.04/24.04/26.04, x86_64**. The build machine needs Node.js 22.13 or newer, npm 10 or newer, `dpkg-deb`, `tar`, and `xz-utils`. If `xvfb-run` is installed, the build also launches the packaged application and verifies the UI-to-backend flow headlessly. From a fresh clone, run:
 
 ```bash
 git clone https://github.com/cloud-cli/glassOS.git
@@ -141,12 +141,14 @@ export GLASSOS_BACKEND_TOKEN="$(node -e 'process.stdout.write(require("node:cryp
 npm run backend:start
 ```
 
-To verify compositor blur without replacing the primary desktop, run Electron inside a nested Hyprland session where available:
+To preview the Hyprland glass effect, install Hyprland and run this from a terminal opened inside your regular Ubuntu Wayland desktop (not from a TTY):
 
 ```bash
-Hyprland --nested
-WAYLAND_DISPLAY=wayland-1 npm run electron:start
+sudo apt install hyprland
+Hyprland -c /opt/GlassOS/resources/glassos-hyprland.conf
 ```
+
+This opens a nested Hyprland preview, starts GlassOS automatically, and only applies opacity to GlassOS. Press **Super+Escape** to close the preview; it does not replace or modify your regular desktop session/configuration.
 
 ## 6. Optional Environment Preparation
 
@@ -175,7 +177,7 @@ fi
 
 ## 8. Next Implementation Steps
 
-1. Validate the installer on Ubuntu 22.04/24.04 and a native Wayland/Hyprland session.
+1. Validate the installer on supported Ubuntu releases and a native Wayland/Hyprland session.
 2. Specify schemas and permissions before adding any system operation to the backend protocol.
 3. Replace the hostname demonstration with the first user-facing shell components.
 4. Add signing and update delivery after the target-machine workflow is established.

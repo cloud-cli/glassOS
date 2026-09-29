@@ -58,6 +58,10 @@ if [[ ! -s "$temporary_dir/opt/GlassOS/resources/app.asar" ]]; then
   printf '%s\n' 'Installer is missing the packaged application archive.' >&2
   exit 1
 fi
+if [[ ! -s "$temporary_dir/opt/GlassOS/resources/glassos-hyprland.conf" ]]; then
+  printf '%s\n' 'Installer is missing its optional Hyprland preview profile.' >&2
+  exit 1
+fi
 if [[ ! -x node_modules/.bin/asar ]]; then
   printf '%s\n' 'ASAR inspection tool is missing after dependency installation.' >&2
   exit 1

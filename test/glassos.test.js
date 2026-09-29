@@ -159,8 +159,10 @@ test("build script produces and validates a Linux installer from a clean checkou
   assert.match(buildScript, /npm run package:linux/);
   assert.match(buildScript, /dpkg-deb --extract/);
   assert.match(buildScript, /asar list/);
+  assert.match(buildScript, /glassos-hyprland\.conf/);
   assert.match(builderConfig, /target: deb/);
   assert.match(builderConfig, /- x64/);
+  assert.match(builderConfig, /from: hyprland\/hyprland\.conf/);
   await fs.access(path.join(root, "build.sh"), constants.X_OK);
 });
 
@@ -171,5 +173,8 @@ test("Hyprland profile contains the low-overhead glass settings", async () => {
   assert.match(config, /enabled\s*=\s*false/);
   assert.match(config, /passes\s*=\s*3/);
   assert.match(config, /size\s*=\s*8/);
-  assert.match(config, /windowrulev2\s*=\s*blur/);
+  assert.match(config, /windowrule\s*=\s*opacity.*match:class.*glassos/);
+  assert.match(config, /exec-once\s*=\s*glassos/);
+  assert.match(config, /bind\s*=\s*SUPER,\s*ESCAPE,\s*exit/);
+  assert.doesNotMatch(config, /class:\^\(\.\*\)\$/);
 });

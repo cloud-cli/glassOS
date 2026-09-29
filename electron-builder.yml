@@ -21,6 +21,9 @@ files:
   - backend/**/*
   - electron/**/*
   - package.json
+extraResources:
+  - from: hyprland/hyprland.conf
+    to: glassos-hyprland.conf
 linux:
   target:
     - target: deb
