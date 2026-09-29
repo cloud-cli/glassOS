@@ -99,7 +99,7 @@ cd glassOS
 Install and launch:
 
 ```bash
-sudo apt install ./dist/GlassOS-0.1.1-amd64.deb
+sudo apt install ./dist/GlassOS-0.1.2-amd64.deb
 glassos
 ```
 
@@ -141,10 +141,10 @@ export GLASSOS_BACKEND_TOKEN="$(node -e 'process.stdout.write(require("node:cryp
 npm run backend:start
 ```
 
-To preview the Hyprland glass effect, first update GlassOS to version 0.1.1 and install Hyprland. Then run this from a terminal opened inside your regular Ubuntu Wayland desktop (not from a TTY):
+To preview the Hyprland glass effect, first update GlassOS to version 0.1.2 and install Hyprland. Then run this from a terminal opened inside your regular Ubuntu Wayland desktop (not from a TTY):
 
 ```bash
-sudo apt install ./dist/GlassOS-0.1.1-amd64.deb hyprland
+sudo apt install ./dist/GlassOS-0.1.2-amd64.deb hyprland
 Hyprland -c /opt/GlassOS/resources/glassos-hyprland.conf
 ```
 
